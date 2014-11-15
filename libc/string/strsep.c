@@ -12,3 +12,5 @@ char *strsep(char **str, const char *sep)
 	*str = end;
 	return s;
 }
+
+char *__strsep_g(char **str, const char *sep) __attribute__((alias("strsep")));

@@ -278,6 +278,14 @@ int sigwait(const sigset_t *set, int *sig)
     return 0;
 }
 
+// TODO hack. No idea if this is actually valid.
+int sigsuspend(const sigset_t *sigmask) {
+    int sig;
+    sigwait(sigmask, &sig);
+    errno = EINTR;
+    return -1;
+}
+
 // Partially-Linux-compatible support for kill(2).
 // Note that this is different from our generate_signal() - the latter is only
 // suitable for delivering SIGFPE and SIGSEGV to the same thread that called

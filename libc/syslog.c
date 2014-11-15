@@ -71,3 +71,6 @@ void __syslog_chk(int priority, int flag, const char *message, ...)
     UNLOCK(lock);
 }
 
+void syslog(int priority, const char *message, ...) {
+    // TODO stub
+}
